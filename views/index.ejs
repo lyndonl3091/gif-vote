@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CRUD</title>
+		<meta charset="UTF-8">
+
+		<script src="/bower_components/jquery/dist/jquery.js"></script>
+		<script src="/bower_components/angular/angular.js"></script>
+		<link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+		<script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>	<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+		<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script> 
+		<script src="/bower_components/bootstrap/js/button.js"></script>
+		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" media="all">
+		<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+
+		<script src="/js/module.js"></script>
+		<script src="/js/mainController.js"></script>
+		<script src="/js/userController.js"></script>
+		<script src="/js/thingController.js"></script>
+		<script src="/js/userService.js"></script>
+		<script src="/js/thingService.js"></script>
+		<script src="/js/live.js"></script>
+
+		<link rel="stylesheet" href="/css/style.css" media="all"> 
+	</head>
+
+	<body ng-app="appName">
+		<div class="container">
+
+
+			<div class="btn-group navigation">
+				<label class="btn btn-primary" ui-sref="user" ng-model="user" uib-btn-radio="'user'">User</label>
+			</div>
+
+			<div class="btn-group navigation">
+				<label class="btn btn-primary" ui-sref="thing" ng-model="thing" uib-btn-radio="'thing'">Thing</label>
+			</div>
+
+
+
+
+
+			<ui-view></ui-view>
+
+
+		</div>
+	</body>
+</html>
+
