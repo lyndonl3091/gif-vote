@@ -1,20 +1,20 @@
 "use strict;"
 
 angular.module('appName')
-.controller('thingController', function($scope,$http,thingService) {
+.controller('thingController', function($scope,$http,thingService,twitterService) {
 
 	$scope.getRandomGif = () => {
 		thingService.getRandomGif()
 		.then(res => {
-			console.log('res', res);
-			// let newRes = JSON.parse(res);
 			$scope.img = res.data.data.image_url
 		})
 	}
 
 	$scope.download = thingService.downloadGif;
 
-	$scope.thingArray =[];
+	$scope.upload = twitterService.upload;
+
+	$scope.thingArray = [];
 
 	thingService.getAll()
 	.then( function(things){
