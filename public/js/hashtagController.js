@@ -37,37 +37,41 @@ console.log('hashCtrl');
 	//////////////////////////////////
 	// Socket Stuff
 	//////////////////////////////////
-	$scope.addHashTag = function(thing){
-		thingService.addOne(thing)
-		.then( function(newThing){
-			if(newThing) $scope.thingArray.push(newThing);
-		})
-		.catch( err => {
-			console.log(err);
-		});
-	}
-
-
 	// get new image
+	$scope.voted = false;
+	$scope.submitted = false;
+
 	ngSocket.on('newImage', data =>{
 		// $scope.image = data.image;
 
 	});
 
-	// submit hash tag
-	$scope.hashtag = {
-		hash    : '',
-		vote    : 0,
-		voters  : [],
-		id      : $scope.user
+	$scope.addHashTag = hash => {
+		$scope.submitted = true;
+		hashtag = {
+			hash    : $scope.hashtag,
+			vote    : 0,
+			voters  : [],
+			id      : $scope.user
+		};
+		ngSocket.emit('submitHashtag', {hashtag});
 	};
-	ngSocket.emit('submitHashtag', {hashtag});
+
+	$scope.addVote = hashtag => {
+		$scope.voted = true;
+		hashtag.voters.push($scope.user);
+		console.log(hashtag);
+		ngSocket.emit('vote', hashtag);
+	};
 
 	// get all hash tags after submission
 	ngSocket.on('allHashtags', data =>{
-		// render all hash tags to DOM
-		$scope.hashtags = data.hashtags;
+		$scope.hashtags = data;
 	});
 
+	ngSocket.on('newVote', data=>{
+		console.log('newVote data: ', data);
+
+	});
 
 });

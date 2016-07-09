@@ -5,14 +5,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 
   $stateProvider
   .state('user', {
-    url: '/', 
+    url: '/',
     templateUrl: 'html/user.html',
     controller: 'userController'
   })
-  .state('thing', {
+  .state('hashtag', {
     url: '/',
-    templateUrl: 'html/thing.html',
-    controller: 'thingController'
+    templateUrl: 'html/hashtag.html',
+    controller: 'hashtagController'
   })
 
   $urlRouterProvider.otherwise('/');

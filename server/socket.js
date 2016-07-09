@@ -21,10 +21,14 @@ exports.init = (io, socket) => {
     io.emit('allHashtags', allHashtags);
   });
 
-  socket.on('vote', voteObj =>{
-    let voteOn = allHashtags.map(hashtagObj=> hashtagObj.hash === voteObj.hash ? hashtagObj.vote += 1 : null);
-    //re-broadcast new vote to all users
-    io.emit('newVote', allVotes);
+  socket.on('vote', votedHashtagObj =>{
+    allHashtags.forEach(hashtagObj=>{
+      if(hashtagObj.hash === votedHashtagObj.hash) {
+        hashtagObj.vote += 1;
+        hashtagObj.voters = votedHashtagObj.voters;
+      };
+    });
+    io.emit('newVote', allHashtags);
   });
 
   let findWinner = allHashtags =>{
