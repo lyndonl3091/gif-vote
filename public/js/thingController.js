@@ -1,8 +1,29 @@
 "use strict";
 
 angular.module('appName')
-    .controller('thingController', function($scope, $http, $timeout, $interval, thingService) {
+    .controller('thingController', function($scope, $http, $timeout, $interval, thingService ) {
 
+			$scope.counter = 30;
+
+			// countdown
+			$scope.onTimeout = () => {
+					$scope.counter--;
+					myTimeout = $timeout($scope.onTimeout, 1000);
+			}
+			let myTimeout = $timeout($scope.onTimeout,1000)
+
+			//reset countdown after 30 secs
+			$interval(function(){
+				$scope.counter = 30;
+				$scope.onTimeout = () => {
+					$scope.counter--;
+					myTimeout = $timeout($scope.onTimeout, 1000);
+				}
+				// let myTimeout = $timeout($scope.onTimeout,1000)
+			},30000)
+
+
+			//first gif loads
 			thingService.getRandomGif()
 					.then(res => {
 							$scope.img = res.data.data.image_url
@@ -16,7 +37,7 @@ angular.module('appName')
 
 					})
 
-
+				// refresh and get a new gif after 30 seconds
         $interval(function () {
             thingService.getRandomGif()
                 .then(res => {
@@ -48,15 +69,6 @@ angular.module('appName')
 									$scope.isVisible = true;
 								}, 30000)
         }, 60000)
-
-				// $scope.showImage = () => {
-				// 	console.log('click!');
-				// 	$timeout(function() {
-				// 		$scope.isVisible = false;
-				// 	}, 2000);
-				//
-				// 	$scope.isVisible = true;
-				// }
 
 
         $scope.thingArray = [];
