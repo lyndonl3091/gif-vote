@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>CRUD</title>
+		<title>StarkCgiphy</title>
 		<meta charset="UTF-8">
 
-		<script src="/bower_components/jquery/dist/jquery.js"></script>
-		<script src="/bower_components/angular/angular.js"></script>
-		<link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
-		<script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>	<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
-		<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script> 
-		<script src="/bower_components/bootstrap/js/button.js"></script>
 		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" media="all">
+		<link rel="stylesheet" href="/css/style.css" media="all">
+
+		<script src="/bower_components/angular/angular.js"></script>
+		<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+		<script src="/css/assets/jquery.min.js"></script>
+		<script src="/css/assets/bootstrap.min.js"></script>
+		<script src="/bower_components/bootstrap/js/button.js"></script>
 		<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+
+
 
 		<script src="/js/module.js"></script>
 		<script src="/js/mainController.js"></script>
@@ -20,12 +23,16 @@
 		<script src="/js/thingController.js"></script>
 		<script src="/js/userService.js"></script>
 		<script src="/js/thingService.js"></script>
-		<script src="/js/live.js"></script>
 
-		<link rel="stylesheet" href="/css/style.css" media="all"> 
+		<!-- SOCKETS -->
+		<script src="/bower_components/socket.io-client/socket.io.js"></script>
+		<script src="/bower_components/angular-socket-io/socket.js"></script>
+		<script src="/js/factory/factories.js"></script>
+
+
 	</head>
 
-	<body ng-app="appName">
+	<body ng-app="starkC" ng-controller='mainController'>
 		<div class="container">
 
 
@@ -38,13 +45,10 @@
 			</div>
 
 
-
-
-
-			<ui-view></ui-view>
-
+			<ui-view>
+				<!-- TEMPLATES HERE -->
+			</ui-view>
 
 		</div>
 	</body>
 </html>
-

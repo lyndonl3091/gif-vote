@@ -1,6 +1,6 @@
 "use strict;"
 
-angular.module('appName')
+angular.module('starkC')
 .controller('userController', function($scope,$http,userService) {
 
 	$scope.userArray =[];
@@ -50,6 +50,3 @@ angular.module('appName')
 
 
 });
-
-
-

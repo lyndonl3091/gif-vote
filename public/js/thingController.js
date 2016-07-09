@@ -1,6 +1,6 @@
 "use strict;"
 
-angular.module('appName')
+angular.module('starkC')
 .controller('thingController', function($scope,$http,thingService) {
 
 	$scope.thingArray =[];
@@ -50,6 +50,3 @@ angular.module('appName')
 
 
 });
-
-
-

@@ -1,6 +1,6 @@
 "use strict;"
 
-var app = angular.module('appName', ['ui.bootstrap','ui.router','xeditable']); 
+var app = angular.module('starkC', ['ui.bootstrap','ui.router','xeditable', 'btford.socket-io']);
 app.config(function($stateProvider, $urlRouterProvider){
 
     $stateProvider
@@ -10,4 +10,3 @@ app.config(function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/');
 
 });
-

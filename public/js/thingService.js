@@ -1,6 +1,6 @@
 "use strict;"
 
-angular.module('appName')
+angular.module('starkC')
 .service('thingService', function($http){
 
 
@@ -55,4 +55,3 @@ angular.module('appName')
 
 
 });
-
