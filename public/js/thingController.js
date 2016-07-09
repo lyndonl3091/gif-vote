@@ -5,9 +5,9 @@ angular.module('appName')
 
 	$scope.getRandomGif = () => {
 		thingService.getRandomGif()
-		.then(res => {
-			$scope.img = res.data.data.image_url
-		})
+			.then(res => {
+				$scope.img = res.data.data.image_url
+			})
 	}
 
 	$scope.download = thingService.downloadGif;
@@ -49,7 +49,7 @@ angular.module('appName')
 
 	//  assumes uuid that doesn't change on edit
 	$scope.editOneThing = function(editedThing){
-	console.log(editedThing);
+		console.log(editedThing);
 		thingService.editOne(editedThing)
 		.then( function(updatedThing){
 			console.log('edited');
