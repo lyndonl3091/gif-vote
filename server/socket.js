@@ -7,29 +7,29 @@ exports.init = (io, socket) => {
       winner,
       allHashtags = [];
 
-  // socket.on('backEnd', data => {
-  //   console.log('FR: FrontEnd\n', data);
-  // });
-  //
-  // let testBackEnd = 'FrontEnd, BackEnd: TEST';
-  // socket.emit('mainCtrl', testBackEnd);
+  socket.on('backEnd', data => {
+    console.log('FR: FrontEnd\n', data);
+  });
 
-  socket.emit('newImage', newImage);
+  let testBackEnd = 'FrontEnd, BackEnd: TEST';
+  socket.emit('mainCtrl', testBackEnd);
+
+  io.emit('newImage', newImage);
 
   socket.on('submitHashtag', data=>{
     allHashtags.push(data.hashtag);
-    socket.broadcast('allHashtags', allHashtags);
+    io.emit('allHashtags', allHashtags);
   });
 
   socket.on('vote', voteObj =>{
-    let voteOn = allHashtags.map(hashtagObj=> hashtagObj.id === voteObj.id ? hashtagObj.vote += 1 : null);
+    let voteOn = allHashtags.map(hashtagObj=> hashtagObj.hash === voteObj.hash ? hashtagObj.vote += 1 : null);
     //re-broadcast new vote to all users
-    socket.broadcast('newVote', all);
+    io.emit('newVote', allVotes);
   });
 
   let findWinner = allHashtags =>{
     let winner = allHashtags[0];
     allHashtags.forEach(hashtag=> hashTag.vote > winner.vote ? winner = hashtag : null );
-    socket.broadcast('winner', winner.id);
+    io.emit('winner', winner.id);
   };
 };

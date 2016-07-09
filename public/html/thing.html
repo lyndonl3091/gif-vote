@@ -1,13 +1,16 @@
 <h1>CRUD</h1>
 
+<div class="container row jumbotron">
+	<img ng-src='{{giph}}' alt="" class="col-xs-10 col-xs-offset-1">
+</div>
 
 <div class="row">
 	<div class="col-sm-6">
 
-		<form ng-submit='addOneThing(newThing)'>
+		<form ng-submit='addHashTag(hashtag)'>
 			<div class="form-group">
-				<label>Thing Name</label>
-				<input class="form-control" type="text" placeholder="Name of Thing" ng-model='newThing.name' required>
+				<label>HashTag</label>
+				<input class="form-control" type="text" placeholder="#blahblah" ng-model='hashtag.hash' required>
 			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
@@ -19,28 +22,30 @@
 <div class="table-container">
 	<table class="table">
 		<thead>
-			<th>Thing Name</th>
+			<th>Hashtags</th>
 		</thead>
 		<colgroup>
 			<col style="width:80%">
 			<col style="width:20%">
-		</colgroup>  
+		</colgroup>
 
-		<tr ng-repeat="thing in thingArray track by $index">
-			<td>
-				<a href="#" editable-text="thing.name" onbeforesave="editOneThing(thing)" e-required>{{ thing.name ||'empty' }}</a>
-			</td>
-			<td>
-				<button class="delete-button btn btn-danger " ng-click="removeOneThing(thing)">
-					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-				</button>
-			</td>
-		</tr>
+		<!-- <tr ng-repeat="thing in thingArray track by $index">
+		<td>
+		<a href="#" editable-text="thing.name" onbeforesave="editOneThing(thing)" e-required>{{ thing.name ||'empty' }}</a>
+	</td>
+	<td>
+	<button class="delete-button btn btn-danger " ng-click="removeOneThing(thing)">
+	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+</button>
+</td>
+</tr> -->
 
-
-	</tr>
+<tr ng-repeat="hashtag in hashtags track by $index">
+	<td>
+		<a href="#" editable-text="thing.name" onbeforesave="editOneThing(thing)" e-required>{{ hashtag ||'empty' }}</a>
+	</td>
+</tr>
 
 </table>
 
 </div>
-

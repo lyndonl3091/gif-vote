@@ -3,6 +3,7 @@
 angular.module('starkC')
 .service('userService', function($http){
 
+	this.getUUID = _ => $http.get('/uuid');
 
 	this.getAll = () => {
 		return $http({

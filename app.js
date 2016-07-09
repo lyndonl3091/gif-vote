@@ -21,8 +21,8 @@ app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use('/api', require('./routes/api'));
 app.get('/uuid', (req, res)=>{
-  res.send(uuid.v4());
-})
+  res.send(uuid());
+});
 app.get('/',(req,res) =>res.render('index'));
 app.use((req, res, next) => {
   res.handle = (err, dbData) => res.status(err ? 400 : 200).send(err || dbData);
