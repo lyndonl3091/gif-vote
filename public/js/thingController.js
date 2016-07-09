@@ -6,8 +6,9 @@ angular.module('appName')
 	$scope.getRandomGif = () => {
 		thingService.getRandomGif()
 		.then(res => {
-			let newRes = JSON.parse(res);
-			console.log('res:', newRes.);
+			console.log('res', res);
+			// let newRes = JSON.parse(res);
+			$scope.img = res.data.data.image_url
 		})
 	}
 
