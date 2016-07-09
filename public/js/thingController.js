@@ -3,7 +3,20 @@
 angular.module('appName')
     .controller('thingController', function($scope, $http, $timeout, $interval, thingService) {
 
-				
+			thingService.getRandomGif()
+					.then(res => {
+							$scope.img = res.data.data.image_url
+							$scope.otherImg = res.data.data.fixed_height_small_still_url;
+							$scope.height = res.data.data.image_height;
+							$scope.width = res.data.data.image_width;
+
+							$timeout(function() {
+								$scope.isVisible = true;
+							}, 30000)
+
+					})
+
+
         $interval(function () {
             thingService.getRandomGif()
                 .then(res => {
@@ -30,7 +43,11 @@ angular.module('appName')
                     // }
 
                 })
-        }, 5000)
+								$scope.isVisible  = false
+								$timeout(function() {
+									$scope.isVisible = true;
+								}, 30000)
+        }, 60000)
 
 				// $scope.showImage = () => {
 				// 	console.log('click!');
@@ -41,9 +58,6 @@ angular.module('appName')
 				// 	$scope.isVisible = true;
 				// }
 
-				$timeout(function() {
-					$scope.isVisible = true;
-				}, 2000)
 
         $scope.thingArray = [];
 
