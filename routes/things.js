@@ -14,7 +14,7 @@ var gifPath = './file.gif';
 
 
 router.post('/download', function(req,res){
-	request({uri:req.body.gifUrl})
+	return request({uri:req.body.gifUrl})
 	.pipe(fs.createWriteStream(gifPath))
 	.on('close', function(){
 		res.send(gifPath);

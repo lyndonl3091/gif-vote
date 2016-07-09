@@ -1,7 +1,7 @@
 "use strict;"
 
 angular.module('appName')
-.service('thingService', function($http){
+.service('thingService', function($http,twitterService){
 
 	this.getRandomGif = () => {
 		return $http.get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC')
@@ -12,6 +12,9 @@ angular.module('appName')
 			method:'POST',
 			url: '/api/things/download',
 			data: {gifUrl:gifUrl}
+		})
+		.then((res)=>{
+			twitterService.upload(res.data)
 		})
 	}
 

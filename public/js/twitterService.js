@@ -4,11 +4,11 @@ angular.module('appName')
 .service('twitterService', function($http){
 
 
-	this.upload = (imgUrl) => {
+	this.upload = (imgPath) => {
 		return $http({
 			method:'post',
 			url: '/api/twitter/upload',
-			data:{imgUrl:imgUrl}
+			data:{imgPath:imgPath}
 		})
 		.then( res => {
 			if (res.data.length)

@@ -15,7 +15,8 @@ router.post('/upload',function(req,res){
 
 	var twitterText = '#twitterapitest';
 	fs = require('fs');
-	filePath = './public/gif.gif';
+	console.log(req.body);
+	filePath = req.body.imgPath;
 	bufferLength = 1000000;
 	theBuffer = new Buffer(bufferLength);
 	offset = 0;
