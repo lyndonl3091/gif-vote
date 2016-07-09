@@ -55,6 +55,9 @@ console.log('hashCtrl');
 			id      : $scope.user
 		};
 		ngSocket.emit('submitHashtag', {hashtag});
+		let thanks = ['Awesome!', 'Thanks!', 'You Rock!', 'Hahahah, that\'s hillarious.', 'Bwahahaha...', 'iiiiiiiiii like it!'];
+		toastr.warning('Now you should vote on your favorite.', 'Vote Now');
+		toastr.info(thanks[Math.floor(Math.random()*thanks.length)], 'Submitted');
 	};
 
 	$scope.addVote = hashtag => {
@@ -62,6 +65,8 @@ console.log('hashCtrl');
 		hashtag.voters.push($scope.user);
 		console.log(hashtag);
 		ngSocket.emit('vote', hashtag);
+		let votes = ['That one? really?!', 'Ok you got it!', 'That\'s a good choice.', 'Ummm....if you say so'];
+		toastr.success(votes[Math.floor(Math.random()*votes.length)], 'Vote Submitted');
 	};
 
 	// get all hash tags after submission
