@@ -7,4 +7,7 @@ angular.module('starkC')
     console.log('FR: Backend \n', data);
   })
 
+  let msg = 'Backend, Front: TEST';
+  ngSocket.emit('backEnd', msg);
+
 });
