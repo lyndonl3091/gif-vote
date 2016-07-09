@@ -3,6 +3,10 @@
 angular.module('appName')
 .service('thingService', function($http){
 
+	this.getRandomGif = () => {
+		return $http.get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC')
+	}
+
 
 	this.getAll = () => {
 		return $http({
@@ -55,4 +59,3 @@ angular.module('appName')
 
 
 });
-

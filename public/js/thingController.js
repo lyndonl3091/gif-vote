@@ -3,6 +3,14 @@
 angular.module('appName')
 .controller('thingController', function($scope,$http,thingService) {
 
+	$scope.getRandomGif = () => {
+		thingService.getRandomGif()
+		.then(res => {
+			let newRes = JSON.parse(res);
+			console.log('res:', newRes.);
+		})
+	}
+
 	$scope.thingArray =[];
 
 	thingService.getAll()
@@ -50,6 +58,3 @@ angular.module('appName')
 
 
 });
-
-
-
