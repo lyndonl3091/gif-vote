@@ -21,7 +21,6 @@
 		<script src="/js/userService.js"></script>
 		<script src="/js/thingService.js"></script>
 		<script src="/js/twitterService.js"></script>
-		<script src="/js/live.js"></script>
 
 		<link rel="stylesheet" href="/css/style.css" media="all">
 	</head>
@@ -40,7 +39,13 @@
 
 			<div ng-controller='thingController'>
 				<button type="button" class='btn btn-primary'ng-click='getRandomGif()'>Give me</button>
+
 				<button type="button" class='btn btn-primary'ng-click='upload(img)'>Post to Matt's Twitter</button>
+
+				<button type="button" class='btn btn-primary' ng-click='download(img)'>Download gif to /file.gif</button>
+
+
+
 				<div>
 					<img ng-src="{{img}}" alt="" />
 				</div>

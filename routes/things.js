@@ -1,12 +1,25 @@
 "use strict;"
 
 
-var http = require('http');
-var fs = require('fs');
+let http = require('http');
+let fs = require('fs');
+let request = require('request');
 let express = require('express');
 let Thing = require('../models/thing');
 
 let router = express.Router();
+
+
+var gifPath = './file.gif';
+
+
+router.post('/download', function(req,res){
+	request({uri:req.body.gifUrl})
+	.pipe(fs.createWriteStream(gifPath))
+	.on('close', function(){
+		res.send(gifPath);
+	})
+})
 
 
 router.route('/')
