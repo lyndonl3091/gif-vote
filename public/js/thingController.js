@@ -4,13 +4,19 @@ angular.module('appName')
     .controller('thingController', function($scope, $http, $timeout, $interval, thingService ) {
 
 			$scope.counter = 30;
-
+			$scope.counter2 = 60;
 			// countdown
 			$scope.onTimeout = () => {
 					$scope.counter--;
 					myTimeout = $timeout($scope.onTimeout, 1000);
 			}
 			let myTimeout = $timeout($scope.onTimeout,1000)
+
+			$scope.otherTimeout = () => {
+				$scope.counter2--;
+				apple = $timeout($scope.otherTimeout, 1000);
+			}
+			let apple = $timeout($scope.otherTimeout,1000)
 
 			//reset countdown after 30 secs
 			$interval(function(){
@@ -21,6 +27,16 @@ angular.module('appName')
 				}
 				// let myTimeout = $timeout($scope.onTimeout,1000)
 			},30000)
+
+			//reset after 60 seconds
+			$interval(function(){
+				$scope.counter2 = 60;
+				$scope.otherTimeout = () => {
+					$scope.counter2--;
+					apple = $timeout($scope.otherTimeout, 1000);
+				}
+				// let myTimeout = $timeout($scope.onTimeout,1000)
+			},60000)
 
 
 			//first gif loads
