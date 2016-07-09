@@ -7,5 +7,3 @@ $scope.upload = twitterService.upload;
 
 });
 
-
-
