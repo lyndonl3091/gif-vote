@@ -40,8 +40,8 @@
 			<div ng-controller='thingController'>
 				<button type="button" class='btn btn-primary'ng-click='getRandomGif()'>Give me</button>
 				<div>
-					<img ng-src="{{img}}" alt="" />
-					<img ng-src="{{otherImg}}"  style="height:{{height}}px; width:{{width}}px"/>
+					<img ng-src="{{img}}" ng-show='isVisible'/>
+					<img ng-src="{{otherImg}}"  ng-click='showImage()' style="height:{{height}}px; width:{{width}}px"/>
 				</div>
 
 			</div>

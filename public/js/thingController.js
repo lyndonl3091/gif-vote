@@ -1,9 +1,10 @@
 "use strict";
 
 angular.module('appName')
-    .controller('thingController', function($scope, $http, thingService) {
+    .controller('thingController', function($scope, $http, $timeout, $interval, thingService) {
 
-        $scope.getRandomGif = () => {
+				
+        $interval(function () {
             thingService.getRandomGif()
                 .then(res => {
                     console.log('res', res);
@@ -29,7 +30,20 @@ angular.module('appName')
                     // }
 
                 })
-        }
+        }, 5000)
+
+				// $scope.showImage = () => {
+				// 	console.log('click!');
+				// 	$timeout(function() {
+				// 		$scope.isVisible = false;
+				// 	}, 2000);
+				//
+				// 	$scope.isVisible = true;
+				// }
+
+				$timeout(function() {
+					$scope.isVisible = true;
+				}, 2000)
 
         $scope.thingArray = [];
 
