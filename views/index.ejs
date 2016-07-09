@@ -9,7 +9,7 @@
 		<link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
 		<script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>	<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-		<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script> 
+		<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 		<script src="/bower_components/bootstrap/js/button.js"></script>
 		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" media="all">
 		<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
@@ -22,7 +22,7 @@
 		<script src="/js/thingService.js"></script>
 		<script src="/js/live.js"></script>
 
-		<link rel="stylesheet" href="/css/style.css" media="all"> 
+		<link rel="stylesheet" href="/css/style.css" media="all">
 	</head>
 
 	<body ng-app="appName">
@@ -37,6 +37,13 @@
 				<label class="btn btn-primary" ui-sref="thing" ng-model="thing" uib-btn-radio="'thing'">Thing</label>
 			</div>
 
+			<div ng-controller='thingController'>
+				<button type="button" class='btn btn-primary'ng-click='getRandomGif()'>Give me</button>
+				<div>
+					<img ng-src="{{img}}" alt="" />
+				</div>
+
+			</div>
 
 
 
@@ -47,4 +54,3 @@
 		</div>
 	</body>
 </html>
-
