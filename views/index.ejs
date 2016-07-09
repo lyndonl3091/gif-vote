@@ -1,56 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>StarkCgiphy</title>
-		<meta charset="UTF-8">
+<head>
+	<title>StarkCgiphy</title>
+	<meta charset="UTF-8">
 
-		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" media="all">
-		<link rel="stylesheet" href="/css/style.css" media="all">
+	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" media="all">
+	<link rel="stylesheet" href="/css/style.css" media="all">
 
-		<script src="/bower_components/angular/angular.js"></script>
-		<script src="/bower_components/angular-animate/angular-animate.js" charset="utf-8"></script>
-		<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-animate/angular-animate.js" charset="utf-8"></script>
+	<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-		<script src="/css/assets/jquery.min.js"></script>
-		<script src="/css/assets/bootstrap.min.js"></script>
-		<script src="/bower_components/bootstrap/js/button.js"></script>
-		<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-
-
-
-		<script src="/js/module.js"></script>
-		<script src="/js/mainController.js"></script>
-		<script src="/js/userController.js"></script>
-		<script src="/js/hashtagController.js"></script>
-		<script src="/js/userService.js"></script>
-		<script src="/js/thingService.js"></script>
-
-		<!-- SOCKETS -->
-		<script src="/bower_components/socket.io-client/socket.io.js"></script>
-		<script src="/bower_components/angular-socket-io/socket.js"></script>
-		<script src="/js/factory/factories.js"></script>
-
-		<!-- TOASTR -->
-		<link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
-		<script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
-
-	</head>
-
-	<body ng-app="starkC" ng-controller='mainController'>
-		<div class="container">
+	<script src="/css/assets/jquery.min.js"></script>
+	<script src="/css/assets/bootstrap.min.js"></script>
+	<script src="/bower_components/bootstrap/js/button.js"></script>
+	<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 
 
 
+	<script src="/js/module.js"></script>
+	<script src="/js/mainController.js"></script>
+	<script src="/js/userController.js"></script>
+	<script src="/js/hashtagController.js"></script>
+	<script src="/js/userService.js"></script>
+	<script src="/js/thingService.js"></script>
 
 
-			<ui-view>
-				<div class="jumbotron">
-					<h1>Stark C Giphy</h1>
-					<button class="btn btn-lg btn-primary" ui-sref="hashtag" ng-model="thing" uib-btn-radio="'thing'">Enter</button>
-				</div>
-				<!-- TEMPLATES HERE -->
-			</ui-view>
+	<!-- SOCKETS -->
+	<script src="/bower_components/socket.io-client/socket.io.js"></script>
+	<script src="/bower_components/angular-socket-io/socket.js"></script>
+	<script src="/js/factory/factories.js"></script>
 
-		</div>
-	</body>
+	<!-- TOASTR -->
+	<link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+	<script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
+</head>
+
+<body ng-app="starkC" ng-controller='mainController'>
+	<div class="container">
+
+
+
+		<ui-view>
+			<div class="jumbotron">
+				<h1>Stark C Giphy</h1>
+				<button class="btn btn-lg btn-primary" ui-sref="hashtag" ng-model="thing" uib-btn-radio="'thing'">Enter</button>
+			</div>
+			<!-- TEMPLATES HERE -->
+		</ui-view>
+
+	</div>
+</body>
 </html>

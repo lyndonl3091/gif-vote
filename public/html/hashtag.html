@@ -2,6 +2,21 @@
 	<img ng-src='{{giph}}' alt="" class="col-xs-10 col-xs-offset-1">
 </div>
 
+
+
+<button type="button" class='btn btn-primary'ng-click='getRandomGif()'>Give me</button>
+<div>
+	<img ng-src="{{img}}" ng-show='isVisible'/>
+	<img ng-src="{{otherImg}}"  ng-click='showImage()' style="height:{{height}}px; width:{{width}}px"/>
+</div>
+
+<div class='counter'>
+	<h1>Time Left: {{counter2}}</h1>
+	<h2>Submission Time Left: {{counter}}</h2>
+</div>
+
+
+
 <div class="row" ng-hide='submitted'>
 	<div class="col-sm-6">
 
@@ -27,24 +42,13 @@
 			<col style="width:20%">
 		</colgroup>
 
-		<!-- <tr ng-repeat="thing in thingArray track by $index">
-		<td>
-		<a href="#" editable-text="thing.name" onbeforesave="editOneThing(thing)" e-required>{{ thing.name ||'empty' }}</a>
-	</td>
-	<td>
-	<button class="delete-button btn btn-danger " ng-click="removeOneThing(thing)">
-	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-</button>
-</td>
-</tr> -->
+		<tr ng-repeat="hashtag in hashtags track by $index">
+			<td>
+				<a href="#" editable-text="hashtag.hash" onbeforesave="editOneThing(thing)" e-required>{{ hashtag.hash ||'empty' }}</a>
+				<button ng-hide='voted' ng-click='addVote(hashtag)' class="btn btn-success pull-right"><i class="glyphicon glyphicon-thumbs-up"></i></button>
+			</td>
+		</tr>
 
-<tr ng-repeat="hashtag in hashtags track by $index">
-	<td>
-		<a href="#" editable-text="hashtag.hash" onbeforesave="editOneThing(thing)" e-required>{{ hashtag.hash ||'empty' }}</a>
-		<button ng-hide='voted' ng-click='addVote(hashtag)' class="btn btn-success pull-right"><i class="glyphicon glyphicon-thumbs-up"></i></button>
-	</td>
-</tr>
-
-</table>
+	</table>
 
 </div>
