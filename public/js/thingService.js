@@ -1,11 +1,3 @@
-"use strict;"
-
-angular.module('starkC')
-.service('thingService', function($http){
-
-	this.getRandomGif = () => {
-		return $http.get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC')
-	}
 
 
 	this.getAll = () => {

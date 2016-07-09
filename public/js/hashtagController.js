@@ -51,7 +51,6 @@ console.log('hashCtrl');
 		hashtag = {
 			hash    : $scope.hashtag,
 			vote    : 0,
-			voters  : [],
 			id      : $scope.user
 		};
 		ngSocket.emit('submitHashtag', {hashtag});
@@ -62,7 +61,6 @@ console.log('hashCtrl');
 
 	$scope.addVote = hashtag => {
 		$scope.voted = true;
-		hashtag.voters.push($scope.user);
 		console.log(hashtag);
 		ngSocket.emit('vote', hashtag);
 		let votes = ['That one? really?!', 'Ok you got it!', 'That\'s a good choice.', 'Ummm....if you say so'];
