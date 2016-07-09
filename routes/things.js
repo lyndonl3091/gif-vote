@@ -1,6 +1,8 @@
 "use strict;"
 
 
+var http = require('http');
+var fs = require('fs');
 let express = require('express');
 let Thing = require('../models/thing');
 
