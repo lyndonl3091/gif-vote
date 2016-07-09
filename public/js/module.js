@@ -4,13 +4,11 @@ var app = angular.module('starkC', ['ui.bootstrap','ui.router', 'btford.socket-i
 app.config(function($stateProvider, $urlRouterProvider){
 
   $stateProvider
-  .state('user', {
-    url: '/',
-    templateUrl: 'html/user.html',
-    controller: 'userController'
+  .state('home', {
+    url: '/'
   })
   .state('hashtag', {
-    url: '/',
+    url: '/play',
     templateUrl: 'html/hashtag.html',
     controller: 'hashtagController'
   })

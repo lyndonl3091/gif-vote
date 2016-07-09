@@ -76,7 +76,6 @@ console.log('hashCtrl');
 
 	ngSocket.on('newVote', data=>{
 		console.log('newVote data: ', data);
-
 	});
 
 });

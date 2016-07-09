@@ -40,16 +40,14 @@
 		<div class="container">
 
 
-			<div class="btn-group navigation">
-				<label class="btn btn-primary" ui-sref="user" ng-model="user" uib-btn-radio="'user'">User</label>
-			</div>
 
-			<div class="btn-group navigation">
-				<label class="btn btn-primary" ui-sref="hashtag" ng-model="thing" uib-btn-radio="'thing'">Thing</label>
-			</div>
 
 
 			<ui-view>
+				<div class="jumbotron">
+					<h1>Stark C Giphy</h1>
+					<button class="btn btn-lg btn-primary" ui-sref="hashtag" ng-model="thing" uib-btn-radio="'thing'">Enter</button>
+				</div>
 				<!-- TEMPLATES HERE -->
 			</ui-view>
 

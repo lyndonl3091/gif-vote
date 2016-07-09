@@ -1,11 +1,9 @@
 'use strict';
 
 const io = require('socket.io');
-
+let allHashtags = []
 exports.init = (io, socket) => {
-  let newImage,
-      winner,
-      allHashtags = [];
+  let newImage,winner;
 
   socket.on('backEnd', data => {
     console.log('FR: FrontEnd\n', data);
@@ -17,6 +15,7 @@ exports.init = (io, socket) => {
   io.emit('newImage', newImage);
 
   socket.on('submitHashtag', data=>{
+    console.log('allHashtags\n', allHashtags);
     allHashtags.push(data.hashtag);
     io.emit('allHashtags', allHashtags);
   });
