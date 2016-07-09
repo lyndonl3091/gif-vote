@@ -7,14 +7,13 @@ let Thing = require('../models/thing');
 
 let router = express.Router();
 
-
 router.post('/upload',function(req,res){
 
 	//  stolen from http://stackoverflow.com/questions/32836850/how-do-you-upload-a-chunked-video-to-twitter-using-node
 	var bufferLength, filePath, finished, fs, oauthCredentials, offset, segment_index, theBuffer;
 
 
-	var twitterText = '#hownasdasdowaboutthis';
+	var twitterText = '#twitterapitest';
 	fs = require('fs');
 	filePath = './public/gif.gif';
 	bufferLength = 1000000;
@@ -110,7 +109,6 @@ router.post('/upload',function(req,res){
 
 		var media_id_string = JSON.parse(mediaResponse).media_id_string;
 		var text = encodeURI(twitterText);
-		console.log(text);
 
 		formData = {
 			status: text,
@@ -127,12 +125,8 @@ router.post('/upload',function(req,res){
 			media_ids: media_id_string
 		};
 
-
-
-		console.log(options);
-
 		request.post(options,function(err,res,body){
-			console.log("SUCCESS",body)
+			console.log("RESULT:",body)
 		})	
 	}
 
