@@ -1,7 +1,7 @@
 "use strict;"
 
 angular.module('starkC')
-.controller('mainController', function($scope, ngSocket) {
+.controller('mainController', function($scope, ngSocket, uuid) {
 
   // ngSocket.on('mainCtrl', data=>{
   //   console.log('FR: Backend \n', data);
@@ -17,31 +17,32 @@ angular.module('starkC')
   });
 
   // submit hash tag
-  let hashTag = {
-    hashTag : '',
+  let hashtag = {
+    hash    : '',
     vote    : 0,
     voters  : [],
     id      : ''
   };
-  ngSocket.emit('hashtag', {hashtag});
+  ngSocket.emit('submitHashtag', {hashtag});
 
   // get all hash tags after submission
-  ngSocket.on('allHashTags', allHashtags =>{
+  ngSocket.on('allHashtags', allHashtags =>{
     $scope.$broadcast('getAllTags');
     // render all hash tags to DOM
 
-  //vote on hashTag
-  let newVote = {votedHashtag}
-  ngSocket.emit('vote', newVote);
+    //vote on hashTag
+    let newVote = {votedHashtag}
+    ngSocket.emit('vote', newVote);
 
 
-  ngSocket.on('newVote', allVotes =>{
-    // render that vote to the dom.
-    $scope.$broadcast('newVote')
-  });
+    ngSocket.on('newVote', allVotes =>{
+      // render that vote to the dom.
+      $scope.$broadcast('newVote')
+    });
 
-  ngSocket.on('winner', winner=>{
-    // check this user's uuid for winner match
-    $scope.$broadcast('winner');
+    ngSocket.on('winner', winner=>{
+      // check this user's uuid for winner match
+      $scope.$broadcast('winner');
+    });
   });
 });

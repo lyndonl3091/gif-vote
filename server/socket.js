@@ -5,7 +5,7 @@ const io = require('socket.io');
 exports.init = (io, socket) => {
   let newImage,
       winner,
-      allTags = [];
+      allHashtags = [];
 
   // socket.on('backEnd', data => {
   //   console.log('FR: FrontEnd\n', data);
@@ -16,21 +16,20 @@ exports.init = (io, socket) => {
 
   socket.emit('newImage', newImage);
 
-  socket.on('hashtag', data=>{
-    allTags.push(data.hashtag);
-    socket.broadcast('allHashTags', allTags);
+  socket.on('submitHashtag', data=>{
+    allHashtags.push(data.hashtag);
+    socket.broadcast('allHashtags', allHashtags);
   });
 
-  socket.on('vote', data=>{
-    let votedOn = allTags[allTags.indexOf(data.hashtag)];
-    votedOn.vote += 1;
+  socket.on('vote', voteObj =>{
+    let voteOn = allHashtags.map(hashtagObj=> hashtagObj.id === voteObj.id ? hashtagObj.vote += 1 : null);
     //re-broadcast new vote to all users
-    socket.broadcast('newVote', allTags);
+    socket.broadcast('newVote', all);
   });
 
-  let findWinner = allTags =>{
-    let winner = allTags[0];
-    allTags.forEach(hashtag=> hashTag.vote > winner.vote ? winner = hashTag : null );
+  let findWinner = allHashtags =>{
+    let winner = allHashtags[0];
+    allHashtags.forEach(hashtag=> hashTag.vote > winner.vote ? winner = hashtag : null );
     socket.broadcast('winner', winner.id);
   };
 };

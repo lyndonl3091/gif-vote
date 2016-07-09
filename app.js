@@ -3,6 +3,7 @@ require('dotenv').load();
 const PORT 			= process.env.PORT || 8000;
 const MONGO_URL = process.env.MONGODB_URI || 'mongodb://localhost/giphTwitter';
 
+const uuid      = require('uuid');
 const express 	= require('express');
 const router 		= express.Router();
 const morgan 		= require('morgan');
@@ -19,6 +20,9 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use('/api', require('./routes/api'));
+app.get('/uuid', (req, res)=>{
+  res.send(uuid.v4());
+})
 app.get('/',(req,res) =>res.render('index'));
 app.use((req, res, next) => {
   res.handle = (err, dbData) => res.status(err ? 400 : 200).send(err || dbData);

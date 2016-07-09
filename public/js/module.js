@@ -1,6 +1,6 @@
 "use strict;"
 
-var app = angular.module('starkC', ['ui.bootstrap','ui.router', 'btford.socket-io']);
+var app = angular.module('starkC', ['ui.bootstrap','ui.router', 'btford.socket-io', 'angular-uuid']);
 app.config(function($stateProvider, $urlRouterProvider){
 
     $stateProvider
