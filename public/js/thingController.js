@@ -12,6 +12,8 @@ angular.module('appName')
 		})
 	}
 
+	$scope.download = thingService.downloadGif;
+
 	$scope.thingArray =[];
 
 	thingService.getAll()

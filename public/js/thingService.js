@@ -7,6 +7,14 @@ angular.module('appName')
 		return $http.get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC')
 	}
 
+	this.downloadGif = (gifUrl)=>{
+		return $http({
+			method:'POST',
+			url: '/api/things/download',
+			data: {gifUrl:gifUrl}
+		})
+	}
+
 
 	this.getAll = () => {
 		return $http({
