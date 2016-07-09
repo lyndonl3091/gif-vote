@@ -20,12 +20,13 @@
 		<script src="/js/thingController.js"></script>
 		<script src="/js/userService.js"></script>
 		<script src="/js/thingService.js"></script>
+		<script src="/js/twitterService.js"></script>
 		<script src="/js/live.js"></script>
 
 		<link rel="stylesheet" href="/css/style.css" media="all"> 
 	</head>
 
-	<body ng-app="appName">
+	<body ng-app="appName" ng-controller="mainController">
 		<div class="container">
 
 
@@ -36,6 +37,14 @@
 			<div class="btn-group navigation">
 				<label class="btn btn-primary" ui-sref="thing" ng-model="thing" uib-btn-radio="'thing'">Thing</label>
 			</div>
+
+			<div class="btn-group navigation">
+				<label class="btn btn-primary" ng-click="upload()">Thing</label>
+			</div>
+
+
+
+
 
 
 

@@ -1,0 +1,33 @@
+UPLOAD MEDIA:
+
+var bufferLength, filePath, finished, fs, oauthCredentials, offset, request, segment_index, theBuffer;
+
+
+
+
+
+
+
+
+POST STATUS:
+
+receive gifId from upload
+
+text is message text: 
+"Players guessed what happens next: " + hashtags
+encodeURI() or encodeURIComponent();
+
+
+as url params:
+
+{status: text,
+media_ids: gifId}
+
+
+possible for one of the versions:
+in_reply_to_status_id: id of other tweet
+we get json back with an id 
+
+
+
+
