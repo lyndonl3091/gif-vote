@@ -1,31 +1,29 @@
 <div class="container row jumbotron">
-	<img ng-src='{{giph}}' alt="" class="col-xs-10 col-xs-offset-1">
+	<img ng-src='{{image}}' class='col-xs-10 col-xs-offset-1'/>
+	<!-- <img ng-src='{{giph}}' ng-hide='image' class="col-xs-10 col-xs-offset-1"> -->
 </div>
 
-
-
-<button type="button" class='btn btn-primary'ng-click='getRandomGif()'>Give me</button>
 <div>
 	<img ng-src="{{img}}" ng-show='isVisible'/>
 	<img ng-src="{{otherImg}}"  ng-click='showImage()' style="height:{{height}}px; width:{{width}}px"/>
 </div>
 
-<div class='counter'>
-	<h1>Time Left: {{counter2}}</h1>
-	<h2>Submission Time Left: {{counter}}</h2>
+<div class="times container-fluid col-xs-offset-2">
+	<a ng-href="https://twitter.com/MattBroatch/status/{{tweet}}"><p class="lead col-xs-offset-2 text-warning">Last Round's Winning Tweet</p></a>
+	<h4 class='round-count-frame col-xs-8 col-xs-offset-3'>Round Ends In: <span class="text-danger">{{counter2}}</span> </h4>
+	<h2 class='submission-count-frame col-xs-8 col-xs-offset-2 animated infinite pulse' ><span class='submission-count'>{{counter}}</span></h2>
 </div>
 
 
+<div class="row" ng-hide='submitted || counter2 < 30'>
+	<div class="col-xs-offset-3 ">
 
-<div class="row" ng-hide='submitted'>
-	<div class="col-sm-6">
-
-		<form ng-submit='addHashTag(hashtag)'>
+		<form ng-submit='addHashTag(hashtag)' class='form-inline'>
 			<div class="form-group">
 				<label>HashTag</label>
-				<input class="form-control" type="text" placeholder="#blahblah" ng-model='hashtag' required>
+				<input class="form-control " type="text" placeholder="#blahblah" ng-model='hashtag' required>
+				<button type="submit" class="btn btn-primary ">Submit</button>
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 
 	</div>
@@ -36,6 +34,7 @@
 	<table class="table">
 		<thead>
 			<th>Hashtags</th>
+			<th>Votes</th>
 		</thead>
 		<colgroup>
 			<col style="width:80%">
@@ -44,8 +43,11 @@
 
 		<tr ng-repeat="hashtag in hashtags track by $index">
 			<td>
-				<a href="#" editable-text="hashtag.hash" onbeforesave="editOneThing(thing)" e-required>{{ hashtag.hash ||'empty' }}</a>
-				<button ng-hide='voted' ng-click='addVote(hashtag)' class="btn btn-success pull-right"><i class="glyphicon glyphicon-thumbs-up"></i></button>
+				<p class='lead'>{{ hashtag.hash }} </p>
+
+			</td>
+			<td>
+				<p class='lead'>{{ hashtag.vote }} <button ng-hide='voted' ng-click='addVote(hashtag)' class="btn btn-success pull-right"><i class="fa fa-thumbs-up fa-2x"></i></button></p>
 			</td>
 		</tr>
 

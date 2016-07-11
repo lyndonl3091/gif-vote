@@ -1,3 +1,18 @@
+"use strict;"
+
+angular.module('starkC')
+.service('thingService', function($http,twitterService){
+
+	this.downloadGif = (gifUrl)=>{
+		return $http({
+			method:'POST',
+			url: '/api/things/download',
+			data: {gifUrl:gifUrl}
+		})
+		.then((res)=>{
+			twitterService.upload(res.data)
+		})
+	}
 
 
 	this.getAll = () => {

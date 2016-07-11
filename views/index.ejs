@@ -3,8 +3,11 @@
 <head>
 	<title>StarkCgiphy</title>
 	<meta charset="UTF-8">
-
-	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" media="all">
+	<link rel="stylesheet" type='text/css' href="/css/assets/bootswatch-slate.css">
+	<!-- <script src="/bower_components/angular-animate/angular-animate.js"></script> -->
+	<link href="/css/assets/animate.css" rel="stylesheet"></link>
+	<link rel="stylesheet" type='text/css' href="/bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/assets/Comix Loud.ttf" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="/css/style.css" media="all">
 
 	<script src="/bower_components/angular/angular.js"></script>
@@ -16,20 +19,19 @@
 	<script src="/bower_components/bootstrap/js/button.js"></script>
 	<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 
-
-
 	<script src="/js/module.js"></script>
 	<script src="/js/mainController.js"></script>
 	<script src="/js/userController.js"></script>
 	<script src="/js/hashtagController.js"></script>
 	<script src="/js/userService.js"></script>
-
+	<script src="/js/twitterService.js"></script>
 
 
 	<!-- SOCKETS -->
 	<script src="/bower_components/socket.io-client/socket.io.js"></script>
 	<script src="/bower_components/angular-socket-io/socket.js"></script>
 	<script src="/js/factory/factories.js"></script>
+
 
 	<!-- TOASTR -->
 	<link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
@@ -43,9 +45,20 @@
 
 
 		<ui-view>
-			<div class="jumbotron">
-				<h1>Stark C Giphy</h1>
-				<button class="btn btn-lg btn-primary" ui-sref="hashtag" ng-model="thing" uib-btn-radio="'thing'">Enter</button>
+			<div class="jumbotron row text-center" id='splash-page'>
+				<div id="title">
+					<h1 class='splash animated fadeIn'>STARK C* <hr>GIPHY</h1>
+					<hr>
+					<button class="btn btn-lg btn-success splash" ui-sref="hashtag">PLAY</button>
+
+					<h2>Intructions:</h2><br>
+					<ul class='list-unstyled instructions animated fadeIn'>
+							<li>TAKE 30 SECONDS TO CREATE A HASHTAG FOR THE GIVEN PICTURE.</li><br>
+							<li>TAKE ANOTHER 30 SECONDS TO UPVOTE THE HASHTAG THAT YOU LIKE.</li><br>
+							<li>HASHTAG WITH THE MOST VOTE BY THE END OF THE ROUND, WINS.</li><br>
+							<li>CHECK OUT THE LINK TO SEE THE GIF AND THE WINNING HASHTAG POSTED ON TWITTER.</li>
+					</ul>
+				</div>
 			</div>
 			<!-- TEMPLATES HERE -->
 		</ui-view>

@@ -1,3 +1,23 @@
+@font-face {
+  font-family: "ComicFont";
+  src : url('assets/Comix Loud.ttf');
+}
+
+#splash-page {
+	font-family: 'ComicFont';
+	height: 100vh;
+}
+
+#title {
+	position: relative;
+	top : 50%;
+	transform: translateY(-50%);
+}
+
+.splash {
+	font-family: 'ComicFont';
+}
+
 .buttons-cell {
 	text-align:right;
 }
@@ -10,6 +30,24 @@ td {
 	vertical-align:middle!important;
 }
 
-/*.counter h1 {
-	font-size: 200px;
-}*/
+span.submission-count {
+	font-size: 150px;
+	position: relative;
+	left : 26px;
+	top : 33px;
+}
+
+h2.submission-count-frame {
+	background-color: black;
+	border-radius: 50%;
+	width: 250px;
+	height: 250px;
+}
+
+div.times {
+	float: none;
+}
+
+.instructions {
+	line-height: 30px;
+}

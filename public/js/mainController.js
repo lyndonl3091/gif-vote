@@ -11,11 +11,12 @@ angular.module('starkC')
   .catch(err=> console.log('ERROR getting uuid: ', error));
 
 
-  ngSocket.on('mainCtrl', data=>{
-    console.log('FR: Backend \n', data);
-  })
-
+  ngSocket.on('mainCtrl', data=> console.log('FR: Backend \n', data));
   let msg = 'Backend, Front: TEST';
   ngSocket.emit('backEnd', msg);
 
+  ngSocket.on('welcomePackage', data=> {
+    $scope.welcome = data
+    console.log('$scope.welcome: ', $scope.welcome);
+  });
 });

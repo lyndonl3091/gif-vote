@@ -2,7 +2,7 @@
 
 angular.module('starkC')
 .controller('hashtagController', function($scope,$http, toastr, ngSocket, userService) {
-console.log('hashCtrl');
+	console.log('hashCtrl');
 	// $scope.thingArray =[];
 	// thingService.getAll()
 	// .then( function(things){
@@ -40,11 +40,41 @@ console.log('hashCtrl');
 	// get new image
 	$scope.voted = false;
 	$scope.submitted = false;
+	let image, giph, dbTime;
 
-	ngSocket.on('newImage', data =>{
-		// $scope.image = data.image;
-
+	ngSocket.on('time', time=>{
+		dbTime = time;
+		$scope.submitTime = time;
+		$scope.counter2 = time;
+		time > 30 ? $scope.image = image : $scope.image = giph;
 	});
+	ngSocket.on('newImage', data =>{
+		image = data.result.url;
+		giph = data.gifUrl;
+	});
+
+	ngSocket.on('submission', time=>{
+		$scope.counter = time;
+	});
+
+	ngSocket.on('winner', data=>{
+		console.log('winner: ', data);
+		$scope.tweet = data.tweet.id_str;
+		console.log('$scope.tweet', data.tweet.id_str);
+
+		data.winner === $scope.user ? toastr.success('CONGRATULATIONS! YOU WON', 'YOU WIN') : toastr.error('Sorry you didn\'t win. Try harder.', 'LOSER');
+		renderTable();
+	})
+
+
+	setTimeout(()=>{
+		console.log('$scope.welcome : ', $scope.welcome);
+		if($scope.welcome)
+		$scope.hashtags = $scope.welcome.allHashtags;
+		$scope.welcome.roundCount > 30 ? $scope.image = $scope.welcome.pngUrl : $scope.image = $scope.welcome.gifUrl;
+		renderTable($scope.welcome.allHashtags);
+	}, 500)
+
 
 	$scope.addHashTag = hash => {
 		$scope.submitted = true;
@@ -55,7 +85,7 @@ console.log('hashCtrl');
 		};
 		ngSocket.emit('submitHashtag', {hashtag});
 		let thanks = ['Awesome!', 'Thanks!', 'You Rock!', 'Hahahah, that\'s hillarious.', 'Bwahahaha...', 'iiiiiiiiii like it!'];
-		toastr.warning('Now you should vote on your favorite.', 'Vote Now');
+		// toastr.warning('Now you should vote on your favorite.', 'Vote Now');
 		toastr.info(thanks[Math.floor(Math.random()*thanks.length)], 'Submitted');
 	};
 
@@ -67,13 +97,12 @@ console.log('hashCtrl');
 		toastr.success(votes[Math.floor(Math.random()*votes.length)], 'Vote Submitted');
 	};
 
-	// get all hash tags after submission
-	ngSocket.on('allHashtags', data =>{
-		$scope.hashtags = data;
-	});
+	let renderTable = (hashtags = null) => $scope.hashtags = hashtags;
 
-	ngSocket.on('newVote', data=>{
-		console.log('newVote data: ', data);
-	});
+	// get all hash tags after submission
+	ngSocket.on('allHashtags', data => renderTable(data));
+
+	ngSocket.on('newVote', data=> renderTable(data));
+
 
 });
